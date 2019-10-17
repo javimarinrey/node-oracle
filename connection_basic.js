@@ -1,9 +1,9 @@
-const oracle = require('oracledb');
+const oracledb = require('oracledb');
 const dbConfig = require('./config/database');
 
 let connection;
 
-async function run () {
+async function init () {
 	try {
 
 		const USER = dbConfig.hr.user;
@@ -12,7 +12,7 @@ async function run () {
 		const PORT = dbConfig.hr.port;
 		const DDBB = dbConfig.hr.ddbb;
 
-		connection = await oracle.getConnection({
+		connection = await oracledb.getConnection({
 			user: USER,
 			password: PASS,
 			connectString: HOST + ':' + PORT + '/' + DDBB
@@ -31,4 +31,4 @@ async function run () {
 	}
 }
 
-run();
+init();
